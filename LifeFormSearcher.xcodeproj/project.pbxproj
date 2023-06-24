@@ -16,6 +16,7 @@
 		A24C750A2A459C66008AFF91 /* DetailLifeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C75092A459C66008AFF91 /* DetailLifeFormViewController.swift */; };
 		A24C750C2A45BB8F008AFF91 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C750B2A45BB8F008AFF91 /* SearchModels.swift */; };
 		A24C750E2A45BBFC008AFF91 /* SearchModelsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C750D2A45BBFC008AFF91 /* SearchModelsController.swift */; };
+		A24C75122A4701CA008AFF91 /* LifeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C75112A4701CA008AFF91 /* LifeForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A24C75092A459C66008AFF91 /* DetailLifeFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLifeFormViewController.swift; sourceTree = "<group>"; };
 		A24C750B2A45BB8F008AFF91 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
 		A24C750D2A45BBFC008AFF91 /* SearchModelsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModelsController.swift; sourceTree = "<group>"; };
+		A24C75112A4701CA008AFF91 /* LifeForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				A206BA192A4547A7007592D4 /* SceneDelegate.swift */,
 				A206BA1D2A4547A7007592D4 /* Main.storyboard */,
 				A24C75092A459C66008AFF91 /* DetailLifeFormViewController.swift */,
+				A24C75112A4701CA008AFF91 /* LifeForm.swift */,
 				A206BA2B2A454C10007592D4 /* SearchTableViewController.swift */,
 				A24C750B2A45BB8F008AFF91 /* SearchModels.swift */,
 				A24C750D2A45BBFC008AFF91 /* SearchModelsController.swift */,
@@ -150,6 +153,7 @@
 				A206BA182A4547A7007592D4 /* AppDelegate.swift in Sources */,
 				A206BA2C2A454C10007592D4 /* SearchTableViewController.swift in Sources */,
 				A206BA1A2A4547A7007592D4 /* SceneDelegate.swift in Sources */,
+				A24C75122A4701CA008AFF91 /* LifeForm.swift in Sources */,
 				A24C750A2A459C66008AFF91 /* DetailLifeFormViewController.swift in Sources */,
 				A24C750C2A45BB8F008AFF91 /* SearchModels.swift in Sources */,
 				A24C750E2A45BBFC008AFF91 /* SearchModelsController.swift in Sources */,

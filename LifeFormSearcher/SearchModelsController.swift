@@ -9,6 +9,8 @@ import Foundation
 
 struct SearchModelsController {
     
+    static let shared = SearchModelsController()
+    
     let baseURL = URL(string: "https://eol.org/api/search/1.0.json")!
     
     func fetchResults(with query: String) async throws -> [SearchItem] {
@@ -26,10 +28,6 @@ struct SearchModelsController {
         return searchItems
     }
     
-    enum SearchModelsControllerError: Error, LocalizedError {
-        case fetchingResultsFailed
-        case fethingItemDetailFailed
-    }
     
     func fetchItemDetail(for id: Int) async throws -> ItemDetailResponse? {
         var urlComponents = URLComponents(string: "https://eol.org/api/pages/1.0/\(id).json")!
@@ -48,4 +46,24 @@ struct SearchModelsController {
         
         return detailResponse?.itemDetailResponse
     }
+    
+    func fetchHierarchyItemInfo(for id: Int) async throws -> HierarchyResponse? {
+        var urlComponents = URLComponents(string: "https://eol.org/api/hierarchy_entries/1.0/\(id).json")!
+        urlComponents.queryItems = ["language" : "en"].map { URLQueryItem(name: $0.key, value: $0.value) }
+        let (data, response) = try await URLSession.shared.data(from: urlComponents.url!)
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else { throw SearchModelsControllerError.fetchingHierarchyFailed }
+        let jsonDecoder = JSONDecoder()
+        let hierarchy = try? jsonDecoder.decode(HierarchyResponse.self, from: data)
+        
+        return hierarchy
+    }
+    
+    
+}
+
+enum SearchModelsControllerError: Error, LocalizedError {
+    case fetchingResultsFailed
+    case fethingItemDetailFailed
+    case fetchingHierarchyFailed
 }

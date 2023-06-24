@@ -90,4 +90,28 @@ struct ItemDetailResponse: Codable {
     }
 }
 
+//MARK: - Model for Hierarchy API request
+
+struct HierarchyResponse: Codable {
+    let name: String?
+    let taxonRank: String?
+    let ancestors: [Ancestor]
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "scientificName"
+        case taxonRank
+        case ancestors
+    }
+    
+    struct Ancestor: Codable {
+        let taxonRank: String?
+        let rankName: String?
+        
+        enum CodingKeys: String, CodingKey {
+            case taxonRank
+            case rankName = "scientificName"
+        }
+    }
+}
+
 
