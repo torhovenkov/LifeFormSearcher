@@ -28,5 +28,24 @@ struct SearchModelsController {
     
     enum SearchModelsControllerError: Error, LocalizedError {
         case fetchingResultsFailed
+        case fethingItemDetailFailed
+    }
+    
+    func fetchItemDetail(for id: Int) async throws -> ItemDetailResponse? {
+        var urlComponents = URLComponents(string: "https://eol.org/api/pages/1.0/\(id).json")!
+        urlComponents.queryItems = [
+            "taxonomy" : "true",
+            "images_per_page" : "1",
+            "language" : "en"
+        ].map { URLQueryItem(name: $0.key, value: $0.value) }
+        
+        let (data, response) = try await URLSession.shared.data(from: urlComponents.url!)
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else { throw SearchModelsControllerError.fethingItemDetailFailed }
+        let jsonDecoder = JSONDecoder()
+        let detailResponse = try? jsonDecoder.decode(RawDetailResponse.self, from: data)
+        
+        
+        return detailResponse?.itemDetailResponse
     }
 }
