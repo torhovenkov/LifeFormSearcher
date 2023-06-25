@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct SearchModelsController {
     
@@ -59,6 +60,14 @@ struct SearchModelsController {
         return hierarchy
     }
     
+    func fetchImage(_ url: URL) async throws -> UIImage {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else { throw SearchModelsControllerError.fetchingImageFailed }
+        guard let  image = UIImage(data: data) else { throw SearchModelsControllerError.fetchingImageFailed  }
+        return image
+    }
+    
     
 }
 
@@ -66,4 +75,5 @@ enum SearchModelsControllerError: Error, LocalizedError {
     case fetchingResultsFailed
     case fethingItemDetailFailed
     case fetchingHierarchyFailed
+    case fetchingImageFailed
 }

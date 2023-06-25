@@ -10,11 +10,13 @@ import Foundation
 struct LifeForm {
     let title: String
     let detailName: String
+    let imageType: String?
     let imageUrl: URL?
     let taxonRank: String?
     let ancestors: [[String?: String?]]?
     let copyright: String?
     let copyrightURL: URL?
+    let taxonSource: String?
     
     
 }

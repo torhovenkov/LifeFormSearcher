@@ -11,7 +11,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet var searchBar: UISearchBar!
     
-    let searchModelsController = SearchModelsController()
     var searchItems: [SearchItem] = []
     
     override func viewDidLoad() {
@@ -33,7 +32,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func fetchResults(with query: String) async throws {
-        self.searchItems = try await searchModelsController.fetchResults(with: query)
+        self.searchItems = try await SearchModelsController.shared.fetchResults(with: query)
     }
     
     

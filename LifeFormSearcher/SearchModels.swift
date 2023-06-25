@@ -96,11 +96,13 @@ struct HierarchyResponse: Codable {
     let name: String?
     let taxonRank: String?
     let ancestors: [Ancestor]
+    let sources: [String]
     
     enum CodingKeys: String, CodingKey {
         case name = "scientificName"
         case taxonRank
         case ancestors
+        case sources = "nameAccordingTo"
     }
     
     struct Ancestor: Codable {
